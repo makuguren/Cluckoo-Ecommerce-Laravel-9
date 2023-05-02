@@ -36,8 +36,8 @@
                                             <a href="{{ url('collections/'.$cartItem->product->category->slug.'/'.$cartItem->product->slug) }}">
                                                 <label class="product-name">
 
-                                                    @if ($cartItem->product->ProductImages)
-                                                        <img src="{{ asset($cartItem->product->ProductImages[0]->image) }}" style="width: 50px; height: 50px" alt="">
+                                                    @if ($cartItem->product->productImages)
+                                                        <img src="{{ asset($cartItem->product->productImages[0]->image) }}" style="width: 50px; height: 50px" alt="">
                                                     @else
                                                         <img src="" style="width: 50px; height: 50px" alt="">
                                                     @endif
