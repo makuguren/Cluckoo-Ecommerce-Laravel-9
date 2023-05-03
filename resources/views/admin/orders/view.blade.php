@@ -5,6 +5,11 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
+
+            @if (session('message'))
+                <div class="alert alert-success mb-3">{{ session('message') }}</div>
+            @endif
+
             <div class="card">
                 <div class="card-header">
                     <h3>My Order Details</h3>
@@ -91,6 +96,39 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border mt-3">
+                <div class="card-body">
+                    <h4>Order Process (Order Status Updates)</h4>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <form action="{{ url('admin/orders/'.$order->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+
+                                <label>Place your Order Status</label>
+                                <div class="input-group">
+                                    <select name="order_status" class="form-select">
+                                        <option value="">Select Order Status</option>
+                                        <option value="In Progress" {{ Request::get('status') == 'In Progress' ? 'selected':''}}>In Progress</option>
+                                        <option value="Completed" {{ Request::get('status') == 'Completed' ? 'selected':''}}>Completed</option>
+                                        <option value="Pending" {{ Request::get('status') == 'Pending' ? 'selected':''}}>Pending</option>
+                                        <option value="Cancelled" {{ Request::get('status') == 'Cancelled' ? 'selected':''}}>Cancelled</option>
+                                        <option value="Out for Delivery" {{ Request::get('status') == 'Out for Delivery' ? 'selected':''}}>Out for Delivery</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary text-white">Update</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="col-md-7">
+                            <br />
+                            <h4 class="md-3">Current Order Status: <span class="text-uppercase">{{ $order->status_message }}</span></h4>
+                        </div>
                     </div>
                 </div>
             </div>
