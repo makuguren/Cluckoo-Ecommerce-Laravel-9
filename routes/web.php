@@ -106,7 +106,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
         Route::post('/users', 'store');
         Route::get('/users/{user_id}/edit', 'edit');
         Route::put('users/{user_id}', 'update');
-        Route::get('users/{user_id}/delete', 'destroy');
+        // Route::get('users/{user_id}/delete', 'destroy');
     });
 
 });

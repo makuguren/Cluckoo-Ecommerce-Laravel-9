@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::paginate(10);
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index');
     }
 
     public function create(){
@@ -55,11 +54,5 @@ class UserController extends Controller
         ]);
 
         return redirect('/admin/users')->with('message','User Updated Successfully');
-    }
-
-    public function destroy(int $userId){
-        $user = User::findOrFail($userId);
-        $user->delete();
-        return redirect('/admin/users')->with('message','User Deleted Successfully');
     }
 }

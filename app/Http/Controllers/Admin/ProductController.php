@@ -16,11 +16,6 @@ use App\Http\Requests\ProductFormRequest;
 
 class ProductController extends Controller{
 
-    // public function index(){
-    //     $products = Product::all();
-    //     return view('admin.products.index', compact('products'));
-    // }
-
     public function create(){
         $categories = Category::all();
         $brands = Brand::all();
@@ -31,10 +26,6 @@ class ProductController extends Controller{
     public function index(){
         return view('admin.products.index');
     }
-
-    // public function create(){
-    //     return view('admin.products.create');
-    // }
 
     public function store(ProductFormRequest $request){
         $validatedData = $request->validated();
