@@ -23,9 +23,9 @@ class DashboardController extends Controller
         $totalUser = User::where('role_as','0')->count();
         $totalAdmin = User::where('role_as','1')->count();
 
-        $todayDate = Carbon::now()->format('d-m-Y');
-        $thisMonth = Carbon::now()->format('m');
-        $thisYear = Carbon::now()->format('Y');
+        $todayDate = Carbon::now()->format('Y-m-d');
+        $thisMonth = Carbon::now()->month;
+        $thisYear = Carbon::now()->year;
 
         $totalOrder = Order::count();
         $todayOrder = Order::whereDate('created_at', $todayDate)->count();

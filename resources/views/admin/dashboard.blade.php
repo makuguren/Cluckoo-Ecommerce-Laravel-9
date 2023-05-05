@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin Daashboard - Cluckoo')
+@section('title', 'Admin Dashboard - Cluckoo')
 @section('content')
 
 <div class="row">
