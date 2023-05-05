@@ -14,7 +14,6 @@ class Index extends Component
     public $color_id;
 
     public function deleteColor($color_id){
-        // dd($color_id);
         $this->color_id = $color_id;
     }
 

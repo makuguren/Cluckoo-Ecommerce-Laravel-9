@@ -70,7 +70,6 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
         Route::post('/products','store');
         Route::get('/products/{product}/edit', 'edit');
         Route::put('/products/{product}', 'update');
-        Route::get('products/{product_id}/delete', 'destroy');
         Route::get('product-image/{product_image_id}/delete', 'destroyImage');
 
         Route::post('product-color/{prod_color_id}', 'updateProdColorQty');
@@ -87,7 +86,6 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
         Route::post('/colors/create', 'store');
         Route::get('/colors/{color}/edit', 'edit');
         Route::put('/colors/{color_id}', 'update');
-        // Route::get('/colors/{color_id}/delete', 'destroy');
     });
 
     //Orders Routes

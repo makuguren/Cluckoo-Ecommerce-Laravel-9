@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\File;
 use App\Http\Requests\ProductFormRequest;
 
 class ProductController extends Controller{
-    public function index(){
-        $products = Product::all();
-        return view('admin.products.index', compact('products'));
-    }
+
+    // public function index(){
+    //     $products = Product::all();
+    //     return view('admin.products.index', compact('products'));
+    // }
 
     public function create(){
         $categories = Category::all();
@@ -26,6 +27,14 @@ class ProductController extends Controller{
         $colors = Color::where('status','0')->get();
         return view('admin.products.create', compact('categories', 'brands', 'colors'));
     }
+
+    public function index(){
+        return view('admin.products.index');
+    }
+
+    // public function create(){
+    //     return view('admin.products.create');
+    // }
 
     public function store(ProductFormRequest $request){
         $validatedData = $request->validated();
@@ -155,19 +164,6 @@ class ProductController extends Controller{
         }
         $productImage->delete();
         return redirect()->back()->with('message', 'Product Image Deleted');
-    }
-
-    public function destroy(int $product_id){
-        $product = Product::findOrFail($product_id);
-        if($product->productImages){
-            foreach($product->productImages as $image){
-                if(File::exists($image->$image)){
-                    File::delete($image->$image);
-                }
-            }
-        }
-        $product->delete();
-        return redirect()->back()->with('message', 'Product Deleted With the All Images');
     }
 
     public function updateProdColorQty(Request $request, $prod_color_id){
