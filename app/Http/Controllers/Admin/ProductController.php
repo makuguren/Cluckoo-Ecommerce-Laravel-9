@@ -171,4 +171,35 @@ class ProductController extends Controller{
        $prodColor->delete();
        return response()->json(['message'=>'Product Color Qty Updated']);
     }
+
+    // ---------------------- Products API's ------------------------------ \\
+    public function apiIndex(){
+        $products = Product::all();
+        if($products->count() > 0){
+            return response()->json([
+                'status' => 200,
+                'products' => $products
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'status_message' => 'No Products Found'
+            ], 404);
+        }
+    }
+
+    public function apiShow($product_id){
+        $products = Product::find($product_id);
+        if($products){
+            return response()->json([
+                'status' => 200,
+                'products' => $products
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => "No Such Products Found!"
+            ], 404);
+        }
+    }
 }
