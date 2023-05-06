@@ -51,7 +51,6 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
         Route::post('sliders/create', 'store');
         Route::get('sliders/{slider}/edit', 'edit');
         Route::put('sliders/{slider}', 'update');
-        Route::get('sliders/{slider}/delete', 'destroy');
     });
 
     //Category Routes
@@ -106,7 +105,6 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
         Route::post('/users', 'store');
         Route::get('/users/{user_id}/edit', 'edit');
         Route::put('users/{user_id}', 'update');
-        // Route::get('users/{user_id}/delete', 'destroy');
     });
 
 });
