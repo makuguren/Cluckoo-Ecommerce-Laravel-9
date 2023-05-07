@@ -68,4 +68,39 @@ class FrontendController extends Controller
     public function thankyou(){
         return view('frontend.thank-you');
     }
+
+
+// ---------------------- Products API's ------------------------------ \\
+
+    public function collectionsAPI(){
+        $categories = Category::where('status','0')->get();
+        if($categories->count() > 0){
+            return response()->json([
+                'status' => 200,
+                'categories' => $categories
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'status_message' => 'No Products Found'
+            ], 404);
+        }
+    }
+
+    public function collectionsShowAPI($category_id){
+        $category = Category::findOrFail($category_id);
+        $products = $category->products()->with('productImages')->get();
+
+        if($products->count() > 0){
+            return response()->json([
+                'status' => 200,
+                'products' => $products
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'status_message' => 'No Products Found'
+            ], 404);
+        }
+    }
 }
