@@ -1,147 +1,164 @@
-<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-    <div class="navbar-brand-wrapper d-flex justify-content-center">
-    <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-        <a class="navbar-brand brand-logo" href="index.html">
-            <!-- <img src="images/logo.svg" alt="logo"/> -->
-            <h4>Clockoo</h4>
-        </a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-        <span class="mdi mdi-sort-variant"></span>
-        </button>
-    </div>
-    </div>
-    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-    <ul class="navbar-nav mr-lg-4 w-100">
-        <li class="nav-item nav-search d-none d-lg-block w-100">
-        <div class="input-group">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="search">
-                <i class="mdi mdi-magnify"></i>
-            </span>
-            </div>
-            <input type="text" class="form-control" placeholder="Search now" aria-label="search" aria-describedby="search">
-        </div>
-        </li>
-    </ul>
-    <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item dropdown me-1">
-        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-bs-toggle="dropdown">
-            <i class="mdi mdi-message-text mx-0"></i>
-            <span class="count"></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
-            <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-            <a class="dropdown-item">
-            <div class="item-thumbnail">
-                <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
-            </div>
-            <div class="item-content flex-grow">
-                <h6 class="ellipsis font-weight-normal">David Grey
-                </h6>
-                <p class="font-weight-light small-text text-muted mb-0">
-                The meeting is cancelled
-                </p>
-            </div>
-            </a>
-            <a class="dropdown-item">
-            <div class="item-thumbnail">
-                <img src="images/faces/face2.jpg" alt="image" class="profile-pic">
-            </div>
-            <div class="item-content flex-grow">
-                <h6 class="ellipsis font-weight-normal">Tim Cook
-                </h6>
-                <p class="font-weight-light small-text text-muted mb-0">
-                New product launch
-                </p>
-            </div>
-            </a>
-            <a class="dropdown-item">
-            <div class="item-thumbnail">
-                <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
-            </div>
-            <div class="item-content flex-grow">
-                <h6 class="ellipsis font-weight-normal"> Johnson
-                </h6>
-                <p class="font-weight-light small-text text-muted mb-0">
-                Upcoming board meeting
-                </p>
-            </div>
-            </a>
-        </div>
-        </li>
-        <li class="nav-item dropdown me-4">
-        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-            <i class="mdi mdi-bell mx-0"></i>
-            <span class="count"></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
-            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-            <a class="dropdown-item">
-            <div class="item-thumbnail">
-                <div class="item-icon bg-success">
-                <i class="mdi mdi-information mx-0"></i>
-                </div>
-            </div>
-            <div class="item-content">
-                <h6 class="font-weight-normal">Application Error</h6>
-                <p class="font-weight-light small-text mb-0 text-muted">
-                Just now
-                </p>
-            </div>
-            </a>
-            <a class="dropdown-item">
-            <div class="item-thumbnail">
-                <div class="item-icon bg-warning">
-                <i class="mdi mdi-settings mx-0"></i>
-                </div>
-            </div>
-            <div class="item-content">
-                <h6 class="font-weight-normal">Settings</h6>
-                <p class="font-weight-light small-text mb-0 text-muted">
-                Private message
-                </p>
-            </div>
-            </a>
-            <a class="dropdown-item">
-            <div class="item-thumbnail">
-                <div class="item-icon bg-info">
-                <i class="mdi mdi-account-box mx-0"></i>
-                </div>
-            </div>
-            <div class="item-content">
-                <h6 class="font-weight-normal">New user registration</h6>
-                <p class="font-weight-light small-text mb-0 text-muted">
-                2 days ago
-                </p>
-            </div>
-            </a>
-        </div>
-        </li>
-        <li class="nav-item nav-profile dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-            <img src="images/faces/face5.jpg" alt="profile"/>
-            <span class="nav-profile-name">{{ Auth::user()->name }}</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-            <a class="dropdown-item">
-            <i class="mdi mdi-settings text-primary"></i>
-            Settings
-            </a>
-            <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                <i class="mdi mdi-logout text-primary"></i>{{ __('Logout') }}
-            </a>
+<div class="mobile-search">
+    <form class="search-form">
+        <span data-feather="search"></span>
+        <input class="form-control mr-sm-2 box-shadow-none" type="text" placeholder="Search...">
+    </form>
+</div>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
+<div class="mobile-author-actions"></div>
+<header class="header-top">
+    <nav class="navbar navbar-light">
+        <div class="navbar-left">
+            <a href="" class="sidebar-toggle">
+                <img class="svg" src="{{ asset('admin/img/svg/bars.svg') }}" alt="img"></a>
+            <a class="navbar-brand" href="#"><img class="dark w" src="{{ asset('admin/img/logo_dark.png') }}" alt="svg"><img class="light" src="{{ asset('admin/img/logo_white.png') }}" alt="img"></a>
+            <form action="/" class="search-form">
+                <span data-feather="search"></span>
+                <input class="form-control mr-sm-2 box-shadow-none" type="text" placeholder="Search...">
             </form>
         </div>
-        </li>
-    </ul>
-    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-        <span class="mdi mdi-menu"></span>
-    </button>
-    </div>
-</nav>
+        <!-- ends: navbar-left -->
+
+        <div class="navbar-right">
+            <ul class="navbar-right__menu">
+                <li class="nav-search d-none">
+                    <a href="#" class="search-toggle">
+                        <i class="la la-search"></i>
+                        <i class="la la-times"></i>
+                    </a>
+                    <form action="/" class="search-form-topMenu">
+                        <span class="search-icon" data-feather="search"></span>
+                        <input class="form-control mr-sm-2 box-shadow-none" type="text" placeholder="Search...">
+                    </form>
+                </li>
+                {{-- <li class="nav-settings">
+                    <div class="dropdown-custom">
+                        <a href="javascript:;" class="nav-item-toggle">
+                            <span data-feather="settings"></span></a>
+                        <div class="dropdown-wrapper dropdown-wrapper--large">
+                            <ul class="list-settings">
+                                <li class="d-flex">
+                                    <div class="mr-3"><img src="{{ asset('admin/img/mail.png') }}" alt=""></div>
+                                    <div class="flex-grow-1">
+                                        <h6>
+                                            <a href="" class="stretched-link">All Features</a>
+                                        </h6>
+                                        <p>Introducing Increment subscriptions </p>
+                                    </div>
+                                </li>
+                                <li class="d-flex">
+                                    <div class="mr-3"><img src="{{ asset('admin/img/color-palette.png') }}" alt=""></div>
+                                    <div class="flex-grow-1">
+                                        <h6>
+                                            <a href="" class="stretched-link">Themes</a>
+                                        </h6>
+                                        <p>Third party themes that are compatible</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex">
+                                    <div class="mr-3"><img src="{{ asset('admin/img/home.png') }}" alt=""></div>
+                                    <div class="flex-grow-1">
+                                        <h6>
+                                            <a href="" class="stretched-link">Payments</a>
+                                        </h6>
+                                        <p>We handle billions of dollars</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex">
+                                    <div class="mr-3"><img src="{{ asset('admin/img/video-camera.png') }}" alt=""></div>
+                                    <div class="flex-grow-1">
+                                        <h6>
+                                            <a href="" class="stretched-link">Design Mockups</a>
+                                        </h6>
+                                        <p>Share planning visuals with clients</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex">
+                                    <div class="mr-3"><img src="{{ asset('admin/img/document.png') }}" alt=""></div>
+                                    <div class="flex-grow-1">
+                                        <h6>
+                                            <a href="" class="stretched-link">Content Planner</a>
+                                        </h6>
+                                        <p>Centralize content gethering and editing</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex">
+                                    <div class="mr-3"><img src="{{ asset('admin/img/microphone.png') }}" alt=""></div>
+                                    <div class="flex-grow-1">
+                                        <h6>
+                                            <a href="" class="stretched-link">Diagram Maker</a>
+                                        </h6>
+                                        <p>Plan user flows & test scenarios</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li> --}}
+                <!-- ends: .nav-settings -->
+
+                <li class="nav-author">
+                    <div class="dropdown-custom">
+                        <a href="javascript:;" class="nav-item-toggle"><img src="{{ asset('admin/img/author-nav.jpg') }}" alt="" class="rounded-circle"></a>
+                        <div class="dropdown-wrapper">
+                            <div class="nav-author__info">
+                                <div class="author-img">
+                                    <img src="{{ asset('admin/img/author-nav.jpg') }}" alt="" class="rounded-circle">
+                                </div>
+                                <div>
+                                    <h6>Administrator</h6>
+                                    <span>Cluckoo</span>
+                                </div>
+                            </div>
+                            <div class="nav-author__options">
+                                {{-- <ul>
+                                    <li>
+                                        <a href="">
+                                            <span data-feather="user"></span> Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span data-feather="settings"></span> Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span data-feather="key"></span> Billing</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span data-feather="users"></span> Activity</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span data-feather="bell"></span> Help</a>
+                                    </li>
+                                </ul> --}}
+                                    <a class="nav-author__signout" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                        <span data-feather="log-out"></span>{{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                            </div>
+                        </div>
+                        <!-- ends: .dropdown-wrapper -->
+                    </div>
+                </li>
+                <!-- ends: .nav-author -->
+            </ul>
+            <!-- ends: .navbar-right__menu -->
+            <div class="navbar-right__mobileAction d-md-none">
+                <a href="#" class="btn-search">
+                    <span data-feather="search"></span>
+                    <span data-feather="x"></span></a>
+                <a href="#" class="btn-author-action">
+                    <span data-feather="more-vertical"></span></a>
+            </div>
+        </div>
+        <!-- ends: .navbar-right -->
+
+    </nav>
+</header>

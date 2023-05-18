@@ -6,8 +6,7 @@
                     <h4 class="footer-heading">{{ $appSetting->website_name ?? 'Website Name' }}</h4>
                     <div class="footer-underline"></div>
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                        {{ $appSetting->website_description ?? '' }}
                     </p>
                 </div>
                 <div class="col-md-3">

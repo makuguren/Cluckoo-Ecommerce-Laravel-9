@@ -2,147 +2,183 @@
 @section('title', 'Edit Product - Cluckoo')
 @section('content')
 
-<div class="row">
-    <div class="col-md-12">
-        @if (session('message'))
-            <h5 class="alert alert-success mb-2">{{ session('message') }}</h5>
-        @endif
-      <div class="card">
-          <div class="card-header">
-              <h3>Edit Product
-                  <a href="{{ url('admin/products') }}" class="btn btn-primary btn-sm text-white float-end">Back</a>
-              </h3>
-          </div>
-          <div class="card-body">
-            @if ($errors->any())
-            <div class="alert alert-warning">
-                @foreach ($errors->all() as $error)
-                    <div>{{ $error }}</div>
-                @endforeach
+<div class="contents">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-lg-12">
+                <div class="breadcrumb-main">
+                    <h4 class="text-capitalize breadcrumb-title">Edit Product</h4>
+                    <div class="breadcrumb-action justify-content-center flex-wrap">
+                        <div class="action-btn">
+                            <a href="{{ url('admin/products') }}" class="btn btn-sm btn-danger btn-add">
+                                <i class="la la-arrow-left"></i>Back</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            @endif
 
-            <form action="{{ url('admin/products/'.$product->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
+            <!-- CODE HERE -->
+            <div class="col-lg-12 mb-30">
 
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="seotag-tab" data-bs-toggle="tab" data-bs-target="#seotag-tab-pane" type="button" role="tab" aria-controls="seotag-tab-pane" aria-selected="false">SEO Tags</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="false">Details</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="false">Product Image</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="colors-tab" data-bs-toggle="tab" data-bs-target="#colors-tab-pane" type="button" role="tab">Product Colors</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                        <div class="mb-3">
-                            <label>Category</label>
-                            <select name="category_id" class="form-control">
-                                <option value="">Select Category</option>
-                                @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'Selected':'' }}>{{ $category->name }}</option>
-                                @endforeach
-                            </select>
+                {{-- @if ($errors->any())
+                <div class="alert alert-warning">
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+                @endif --}}
+
+                <form action="{{ url('admin/products/'.$product->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="card">
+                        <div class="card-header color-dark fw-500">
+                            Home
                         </div>
-                        <div class="mb-3">
-                            <label>Product Name</label>
-                            <input type="text" name="name" value="{{ $product->name }}" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label>Product Slug</label>
-                            <input type="text" name="slug" value="{{ $product->slug }}" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label>Select Brand</label>
-                            <select name="brand" class="form-control">
-                                @foreach ($brands as $brand)
-                                <option value="{{ $brand->name }}" {{ $brand->name == $product->brand ? 'Selected':'' }}>{{ $brand->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label>Small Description (500 Words)</label>
-                            <textarea name="small_description" class="form-control" rows="4">{{ $product->small_description }}</textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label>Small Description</label>
-                            <textarea name="description" class="form-control" rows="4">{{ $product->description }}</textarea>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade border p-3" id="seotag-tab-pane" role="tabpanel" aria-labelledby="seotag-tab" tabindex="0">
-                        <div class="mb-3">
-                            <label>Meta Title</label>
-                            <input type="text" name="meta_title" value="{{ $product->meta_title }}" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label>Meta Description</label>
-                            <textarea name="meta_description" class="form-control" rows="4">{{ $product->meta_description }}</textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label>Meta Keyword</label>
-                            <textarea name="meta_keyword" class="form-control" rows="4">{{ $product->meta_keyword }}</textarea>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade border p-3" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label>Original Price</label>
-                                    <input type="text" name="original_price" value="{{ $product->original_price }}" class="form-control" />
-                                </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1" class="il-gray fs-14 fw-500 align-center">Category</label>
+                                <select class="form-control px-15" name="category_id">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'Selected':'' }}>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label>Selling Price</label>
-                                    <input type="text" name="selling_price" value="{{ $product->selling_price }}" class="form-control" />
-                                </div>
+
+                            <div class="form-group">
+                                <label for="a10" class="il-gray fs-14 fw-500 align-center">Product Name</label>
+                                <input type="text" name="name" value="{{ $product->name }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
+                                @error('name')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label>Quantity</label>
-                                    <input type="text" name="quantity" value="{{ $product->quantity }}" class="form-control" />
-                                </div>
+
+                            <div class="form-group">
+                                <label for="a10" class="il-gray fs-14 fw-500 align-center">Product Slug</label>
+                                <input type="text" name="slug" value="{{ $product->slug }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
+                                @error('slug')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label>Trending</label>
-                                    <input type="checkbox" name="trending" {{ $product->trending == '1' ? 'checked':'' }} style="width: 50px; height: 50px;" />
-                                </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1" class="il-gray fs-14 fw-500 align-center">Select Brand</label>
+                                <select class="form-control px-15" name="brand">
+                                    @foreach ($brands as $brand)
+                                        <option value="{{ $brand->name }}" {{ $brand->name == $product->brand ? 'Selected':'' }}>{{ $brand->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('brand')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label>Featured</label>
-                                    <input type="checkbox" name="featured" {{ $product->featured == '1' ? 'checked':'' }} style="width: 50px; height: 50px;" />
-                                </div>
+
+                            <div class="form-group form-element-textarea mb-20">
+                                <label for="exampleFormControlTextarea1" class="il-gray fs-14 fw-500 align-center">Small Description</label>
+                                <textarea name="small_description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $product->small_description }}</textarea>
+                                @error('small_description')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label>Status</label>
-                                    <input type="checkbox" name="status" {{ $product->status == '1' ? 'checked':'' }} style="width: 50px; height: 50px;" />
-                                </div>
+
+                            <div class="form-group form-element-textarea mb-20">
+                                <label for="exampleFormControlTextarea1" class="il-gray fs-14 fw-500 align-center">Description</label>
+                                <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $product->description }}</textarea>
+                                @error('description')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade border p-3" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
-                        <div class="mb-3">
-                            <label>Upload Product Images</label>
-                            <input type="file" name="image[]" class="form-control" multiple>
+
+                    <div class="card mt-4">
+                        <div class="card-header color-dark fw-500">
+                            SEO Tags
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="a10" class="il-gray fs-14 fw-500 align-center">Meta Title</label>
+                                <input type="text" name="meta_title" value="{{ $product->meta_title }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
+                                @error('meta_title')<small class="text-danger">{{$message}}</small> @enderror
+                            </div>
+
+                            <div class="form-group form-element-textarea mb-20">
+                                <label for="exampleFormControlTextarea1" class="il-gray fs-14 fw-500 align-center">Meta Description</label>
+                                <textarea name="meta_description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $product->meta_description }}</textarea>
+                                @error('meta_description')<small class="text-danger">{{$message}}</small> @enderror
+                            </div>
+
+                            <div class="form-group form-element-textarea mb-20">
+                                <label for="exampleFormControlTextarea1" class="il-gray fs-14 fw-500 align-center">Meta Keyword</label>
+                                <textarea name="meta_keyword" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $product->meta_keyword }}</textarea>
+                                @error('meta_keyword')<small class="text-danger">{{$message}}</small> @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header color-dark fw-500">
+                            Details
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="a10" class="il-gray fs-14 fw-500 align-center">Original Price</label>
+                                <input type="number" name="original_price" value="{{ $product->original_price }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
+                                @error('original_price')<small class="text-danger">{{$message}}</small> @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="a10" class="il-gray fs-14 fw-500 align-center">Selling Price</label>
+                                <input type="number" name="selling_price" value="{{ $product->selling_price }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
+                                @error('selling_price')<small class="text-danger">{{$message}}</small> @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="a10" class="il-gray fs-14 fw-500 align-center">Quantity</label>
+                                <input type="number" name="quantity" value="{{ $product->quantity }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
+                                @error('quantity')<small class="text-danger">{{$message}}</small> @enderror
+                            </div>
+
+                            <div class="form-group form-element-textarea mb-20">
+                                <label for="exampleFormControlTextarea1" class="il-gray fs-14 fw-500 align-center">Status</label>
+                                <div class="checkbox-theme-default custom-checkbox ">
+                                    <input class="checkbox" type="checkbox" name="trending" id="check-un1" {{ $product->trending == '1' ? 'checked':'' }} />
+                                    <label for="check-un1">
+                                        <span class="checkbox-text">
+                                            Trending
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <div class="checkbox-theme-default custom-checkbox ">
+                                    <input class="checkbox" type="checkbox" name="featured" id="check-un2" {{ $product->featured == '1' ? 'checked':'' }} />
+                                    <label for="check-un2">
+                                        <span class="checkbox-text">
+                                            Featured
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <div class="checkbox-theme-default custom-checkbox ">
+                                    <input class="checkbox" type="checkbox" name="status" id="check-un3" {{ $product->status == '1' ? 'checked':'' }} />
+                                    <label for="check-un3">
+                                        <span class="checkbox-text">
+                                            Hidden
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header color-dark fw-500">
+                            Product Image
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group form-element-textarea mb-20">
+                                <div class="custom-file">
+                                    <label for="exampleFormControlTextarea1" class="il-gray fs-14 fw-500 align-center">Upload Product Images</label>
+                                    <input class="form-control" type="file" name="image[]" id="formFile" multiple>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             @if($product->productImages)
                             <div class="row">
                                 @foreach ($product->productImages as $image)
-                                <div class="col-md-2">
+                                <div class="ml-5">
                                     <img src="{{ asset($image->image) }}" style="width: 80px; height: 80px;" class="me-4 border" alt="Img">
                                     <a href="{{ url('admin/product-image/'.$image->id.'/delete') }}" class="d-block">Remove</a>
                                 </div>
@@ -153,68 +189,81 @@
                             @endif
                         </div>
                     </div>
-                    <div class="tab-pane fade border p-3" id="colors-tab-pane" role="tabpanel" tabindex="0">
-                        <div class="mb-3">
-                            <h4>Add Product Color</h4>
-                            <label>Select Color</label>
-                            <hr/>
-                            <div class="row">
-                                @forelse ($colors as $coloritem)
-                                    <div class="col-md-3">
-                                        <div class="p-2 border mb-3">
-                                                Color: <input type="checkbox" name="colors[{{ $coloritem->id }}]" value="{{ $coloritem->id }}" /> {{ $coloritem->name }}
-                                                <br/>
-                                                Quantity: <input type="number" name="colorquantity[{{ $coloritem->id }}]" style="width:70px; border:1px solid" />
+
+                    <div class="card mt-4">
+                        <div class="card-header color-dark fw-500">
+                            Product Color
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="il-gray fs-14 fw-500 align-center">Select Color</label>
+                                    @forelse ($colors as $coloritem)
+                                        <div class="col-md-3">
+                                            <div class="p-2 border mb-3">
+                                                    Color: <input type="checkbox" name="colors[{{ $coloritem->id }}]" value="{{ $coloritem->id }}" /> {{ $coloritem->name }}
+                                                    <br/>
+                                                    Quantity: <input type="number" name="colorquantity[{{ $coloritem->id }}]" style="width:70px; border:1px solid" />
+                                            </div>
                                         </div>
-                                    </div>
-                                @empty
-                                    <div class="col-md-12">
-                                        <h1>No Colors Found</h1>
-                                    </div>
-                                @endforelse
+                                    @empty
+                                        <div class="col-md-12">
+                                            <h1>No Colors Found</h1>
+                                        </div>
+                                    @endforelse
+                            </div>
+
+                            <div class="userDatatable global-shadow border-0 bg-white w-100">
+                                <div class="table-responsive">
+                                    <table class="table mb-0 table-borderless">
+                                        <thead>
+                                            <tr class="userDatatable-header">
+                                                <th><span class="userDatatable-title">Color Name</span></th>
+                                                <th><span class="userDatatable-title">Quantity</span></th>
+                                                <th><span class="userDatatable-title float-left">Action</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($product->productColors as $prodColor)
+                                                <tr>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            @if ($prodColor->color->name)
+                                                                {{ $prodColor->color->name }}
+                                                            @else
+                                                                No Color Found
+                                                            @endif
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <input type="text" value="{{ $prodColor->quantity }}" class="productColorQuantity form-control form-control-sm">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <ul class="mb-0 d-flex flex-wrap">
+                                                            <li>
+                                                                <button type="button" value="{{ $prodColor->id }}" class="btn btn-primary btn-outline-lighten__height mr-2">Update</button>
+                                                            </li>
+                                                            <li>
+                                                                <button type="button" value="{{ $prodColor->id }}" class="btn btn-danger btn-outline-lighten__height">Delete</button>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="layout-button mt-25">
+                                <button type="submit" class="btn btn-primary btn-default btn-squared px-30">Update</button>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-sm table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Color Name</th>
-                                        <th>Quantity</th>
-                                        <th>Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($product->productColors as $prodColor)
-                                        <tr class="prod-color-tr">
-                                            <td>
-                                                @if ($prodColor->color->name)
-                                                    {{ $prodColor->color->name }}
-                                                @else
-                                                    No Color Found
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <div class="input-group mb-3" style="width:150px">
-                                                    <input type="text" value="{{ $prodColor->quantity }}" class="productColorQuantity form-control form-control-sm">
-                                                    <button type="button" value="{{ $prodColor->id }}" class="updateProductColorBtn btn btn-primary btn-sm text-white">Update</button>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <button type="button" value="{{ $prodColor->id }}" class="deleteProductColorBtn btn btn-danger btn-sm text-white">Delete</button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
-                </div>
-                <div class="py-2 float-end">
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </div>
-            </form>
-          </div>
-      </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

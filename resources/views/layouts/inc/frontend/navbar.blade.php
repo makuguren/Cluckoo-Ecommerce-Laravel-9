@@ -3,7 +3,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                    <h5 class="brand-name">{{ $appSetting->website_name ?? 'Website Name' }}</h5>
+                    {{-- <h5 class="brand-name">{{ $appSetting->website_name ?? 'Website Name' }}</h5> --}}
+                    <img class="dark img-fluid" src="{{ asset('admin/img/logo_white.png') }}" alt="svg">
                 </div>
                 <div class="col-md-5 my-auto">
                     <form action="{{ url('search') }}" method="GET" role="search">

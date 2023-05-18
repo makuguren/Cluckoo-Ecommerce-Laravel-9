@@ -63,7 +63,7 @@ class CategoryController extends Controller
         if($request->hasFile('image')){
 
             $uploadPath = 'uploads/category/';
-            $path = 'uploads/category/'.$category->image;
+            $path = $category->image;
             if (File::exists($path)) {
                 File::delete($path);
             }

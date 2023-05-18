@@ -1,77 +1,92 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
-        <li class="nav-item {{ Request::is('admin/dashboard') ? 'active':'' }}">
-            <a class="nav-link" href="{{ url('admin/dashboard') }}">
-                <i class="mdi mdi-home menu-icon"></i>
-                <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
-        <li class="nav-item {{ Request::is('admin/orders') ? 'active':'' }}">
-            <a class="nav-link" href="{{ url('admin/orders') }}">
-                <i class="mdi mdi-sale menu-icon"></i>
-                <span class="menu-title">Orders</span>
-            </a>
-        </li>
-        <li class="nav-item {{ Request::is('admin/categories*') ? 'active':'' }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#categories" aria-expanded="{{ Request::is('admin/categories*') ? 'true':'false' }}">
-                <i class="mdi mdi-view-headline menu-icon"></i>
-                <span class="menu-title">Categories</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="{{ Request::is('admin/categories') ? 'show':'' }}" id="categories">
-                <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link {{ Request::is('admin/categories/create') ? 'active':'' }}" href="{{ url('admin/categories/create') }}">Add Category</a></li>
-                <li class="nav-item"> <a class="nav-link {{ Request::is('admin/categories') || Request::is('admin/category/*/edit') ? 'active':'' }}" href="{{ url('admin/categories') }}">View Categories</a></li>
-                </ul>
+<aside class="sidebar-wrapper">
+            <div class="sidebar sidebar-collapse" id="sidebar">
+                <div class="sidebar__menu-group">
+                    <ul class="sidebar_nav">
+                        <li class="menu-title">
+                            <span>Main menu</span>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('admin/dashboard') }}" class="{{ Request::is('admin/dashboard') ? 'active':'' }}">
+                                <span data-feather="home" class="nav-icon"></span>
+                                <span class="menu-text">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('admin/orders') }}" class="{{ Request::is('admin/orders') ? 'active':'' }}">
+                                <span data-feather="shopping-bag" class="nav-icon"></span>
+                                <span class="menu-text">Orders</span>
+                            </a>
+                        </li>
+
+                        <li class="has-child">
+                            <a href="#" class="{{ Request::is('admin/categories*') ? 'active':'' }}">
+                                <span data-feather="list" class="nav-icon"></span>
+                                <span class="menu-text">Categories</span>
+                                <span class="toggle-icon"></span>
+                            </a>
+                            <ul>
+                                <li class="l_sidebar">
+                                    <a href="{{ url('admin/categories/create') }}">Add Category</a>
+                                </li>
+                                <li class="l_sidebar">
+                                    <a href="{{ url('admin/categories') }}">View Category</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="has-child">
+                            <a href="#" class="{{ Request::is('admin/products*') ? 'active':'' }}">
+                                <span data-feather="shopping-bag" class="nav-icon"></span>
+                                <span class="menu-text">Products</span>
+                                <span class="toggle-icon"></span>
+                            </a>
+                            <ul>
+                                <li class="l_sidebar">
+                                    <a href="{{ url('admin/products/create') }}">Add Product</a>
+                                </li>
+                                <li class="l_sidebar">
+                                    <a href="{{ url('admin/products') }}">View Product</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('admin/brands') }}" class="{{ Request::is('admin/brands') ? 'active':'' }}">
+                                <span data-feather="list" class="nav-icon"></span>
+                                <span class="menu-text">Brands</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('admin/colors') }}" class="{{ Request::is('admin/colors') ? 'active':'' }}">
+                                <span data-feather="list" class="nav-icon"></span>
+                                <span class="menu-text">Colors</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('admin/users') }}" class="{{ Request::is('admin/users') ? 'active':'' }}">
+                                <span data-feather="users" class="nav-icon"></span>
+                                <span class="menu-text">Users</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('admin/sliders') }}" class="{{ Request::is('admin/sliders') ? 'active':'' }}">
+                                <span data-feather="sliders" class="nav-icon"></span>
+                                <span class="menu-text">Home Slider</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('admin/settings') }}" class="{{ Request::is('admin/settings') ? 'active':'' }}">
+                                <span data-feather="settings" class="nav-icon"></span>
+                                <span class="menu-text">Site Setting</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </li>
-
-        <li class="nav-item {{ Request::is('admin/products*') ? 'active':'' }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#products" aria-expanded="{{ Request::is('admin/products*') ? 'true':'false' }}">
-                <i class="mdi mdi-plus-circle menu-icon"></i>
-                <span class="menu-title">Products</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="{{ Request::is('admin/products') ? 'show':'' }}" id="products">
-                <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link {{ Request::is('admin/products/create') ? 'active':'' }}" href="{{ url('admin/products/create') }}">Add Products</a></li>
-                <li class="nav-item"> <a class="nav-link {{ Request::is('admin/products') || Request::is('admin/products/*/edit') ? 'active':'' }}" href="{{ url('admin/products') }}" href="{{ url('admin/products') }}">View Products</a></li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="nav-item {{ Request::is('admin/brands') ? 'active':'' }}">
-        <a class="nav-link" href="{{ url('admin/brands') }}">
-            <i class="mdi mdi-view-headline menu-icon"></i>
-            <span class="menu-title">Brands</span>
-        </a>
-        </li>
-
-        <li class="nav-item {{ Request::is('admin/colors') ? 'active':'' }}">
-        <a class="nav-link" href="{{ url('admin/colors') }}">
-            <i class="mdi mdi-view-headline menu-icon"></i>
-            <span class="menu-title">Colors</span>
-        </a>
-        </li>
-
-        <li class="nav-item {{ Request::is('admin/users') ? 'active':'' }}">
-        <a class="nav-link" href="{{ url('admin/users') }}">
-            <i class="mdi mdi-account-multiple-plus menu-icon"></i>
-            <span class="menu-title">Users</span>
-        </a>
-        </li>
-
-        <li class="nav-item {{ Request::is('admin/sliders') ? 'active':'' }}">
-            <a class="nav-link" href="{{ url('admin/sliders') }}">
-                <i class="mdi mdi-emoticon menu-icon"></i>
-                <span class="menu-title">Home Slider</span>
-            </a>
-        </li>
-        <li class="nav-item {{ Request::is('admin/settings') ? 'active':'' }}">
-        <a class="nav-link" href="{{ url('admin/settings') }}">
-            <i class="mdi mdi-settings menu-icon"></i>
-            <span class="menu-title">Site Setting</span>
-        </a>
-        </li>
-    </ul>
-</nav>
+        </aside>

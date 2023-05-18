@@ -22,8 +22,8 @@ class Index extends Component
         $product = Product::findOrFail($this->product_id);
         if($product->productImages){
             foreach($product->productImages as $image){
-                if(File::exists($image->$image)){
-                    File::delete($image->$image);
+                if(File::exists($image->image)){
+                    File::delete($image->image);
                 }
             }
         }

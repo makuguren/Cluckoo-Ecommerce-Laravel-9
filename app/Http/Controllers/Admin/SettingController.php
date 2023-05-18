@@ -20,6 +20,7 @@ class SettingController extends Controller
             $setting->update([
                 'website_name' => $request->website_name,
                 'website_url' => $request->website_url,
+                'website_description' => $request->website_description,
                 'page_title' => $request->page_title,
                 'meta_keyword' => $request->meta_keyword,
                 'meta_description' => $request->meta_description,
@@ -39,6 +40,7 @@ class SettingController extends Controller
             Setting::create([
                 'website_name' => $request->website_name,
                 'website_url' => $request->website_url,
+                'website_description' => $request->website_description,
                 'page_title' => $request->page_title,
                 'meta_keyword' => $request->meta_keyword,
                 'meta_description' => $request->meta_description,

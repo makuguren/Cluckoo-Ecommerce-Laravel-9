@@ -76,9 +76,9 @@ class FrontendController extends Controller
         $categories = Category::where('status','0')->get();
         if($categories->count() > 0){
             return response()->json([
-                'status' => 200,
                 'categories' => $categories
             ], 200);
+
         } else {
             return response()->json([
                 'status' => 404,
@@ -93,7 +93,6 @@ class FrontendController extends Controller
 
         if($products->count() > 0){
             return response()->json([
-                'status' => 200,
                 'products' => $products
             ], 200);
         } else {

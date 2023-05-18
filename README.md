@@ -1,66 +1,104 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![Logo](https://i.ibb.co/n00wDmQ/logo-dark.png)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Cluckoo Ecommerce
 
-## About Laravel
+This e-commerce website is for all kinds of watches that we are going to sell online. It contains very beautiful UI/UX design and is responsive to make customers or visitors more attractive. We are implementing special features to make the website look better. Employees work around the clock to monitor orders, address customer concerns, and ensure that the watches we sell are safe and sealed. Customers can select any kinds of watches that we are going to sell at the same time. We are adding multiple images, ratings, and other features that I'll provide below.
+# Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Admin Side**
+- **Dashboard and Analytics** – It contains the number of sellers, products, categories, etc.
+- **All Categories**
+- **All Products** – (Create, Read, Update, Delete)
+- **All Brands** - (Create, Read, Update, Delete)
+- **Home Slider** – (Create, Read, Update, Delete)
+- **All Users** – CRUD (without Password because of Privacy) It contains managing Roles (Admin, Moderator, User)
+- **Admin Settings** – It contains customization of the website and switches.
+- **Email System** - It uses authentication (login and signup, forgot password, order summary) and also the tracking number and location of where the item is.
+- **Notifications**
+- **Messages from Customers**
+- **API’s** – It can be used cross-platform like the mobile app that we are developing soon (React Native). Fetching data from APIs is important.
+- **Login and Register**
+- **Logout**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**User Side**
+- **Homepage**
+- **Login and Register**
+- **Profile Details**
+- **Product Details**
+- **List of Carts**
+- **Search**
+- **Place Order and Summary, Confirmation**
+- **Paypal Integration**
+- **Logout**
+# What I Used
+| Name of Software | Value |
+| :-------- | :------- |
+| `Code/IDE` | `Visual  Studio Code` |
+| `Web Frameworks` | `Laravel Artisan 9, Bootstrap 5` |
+| `Dependencies` | `Laravel Livewire, Owl Carousel` |
+| `Design / Prototype` | `Figma, Adobe Photoshop` |
+| `API Testing` | `Postman` |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# System Requirements
 
-## Learning Laravel
+- Composer Version 2.5.5 or Later - [Download](https://getcomposer.org/Composer-Setup.exe)
+- XAMPP - [Download](https://sourceforge.net/projects/xampp/files/)
+- PHP Version 8.25 or Later
+# Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Clone this Repository
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+  git clone https://github.com/makuguren/Cluckoo-Ecommerce-Laravel-9.git
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Composer Installation
+- Find your file where you can save/download the Composer Installer named Composer-Setup.exe
+- Open Composer-Setup.exe and Click Next until you get Installed in your Laptop/PC
+Note: Make Sure you Check Add to PATH during Installation to Access Anywhere when you are using Command Prompt / Terminal.
 
-## Laravel Sponsors
+To verify the Composer that you Installed in your PC/Laptop. type this in your Command Prompt / Terminal
+```bash
+  composer --version
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## XAMPP Installation
+- Find your file where you can save/download the Composer Installer named xampp-windows-x64-8.2.4-0-VS16-installer.exe
+- Open xampp-windows-x64-8.2.4-0-VS16-installer.exe and Click Next until you get Installed in your Laptop/PC
 
-### Premium Partners
+## Laravel 9 Installation
+- Open XAMPP as Administrator to Avoid Errors and Start Apache and MYSQL.
+- Find the file where can you Download Cluckoo-Ecommerce Source Code.
+- Extract the File and Open Cluckoo-Ecommerce.
+- Click Shift + Right Click then Open Command Prompt / Terminal
+Type this Command to Install Laravel 9 Globally.
+```bash
+  composer global require laravel/installer
+```
+Install All Dependencies using this Command:
+```bash
+  composer install
+```
+- Open Google Chrome or Any Browser that you have, and type https://localhost/phpmyadmin
+- Click **New** and type **cluckoo** and select **Collation**.
+- Click Import and find the SQL File. The SQL File is located in your Extracted Cluckoo-Ecommerce Source Code.
+- and Click **Go**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Start the Laravel 9 Server
+Type this Command in your Terminal that you Opened in Previous Step:
+```bash
+  php artisan serve
+```
+to See your Output, Open Google Chrome or Any Browser that you have, and type https://localhost:8000
 
-## Contributing
+# Final Step
+- To Access the Admin Interface of Ecommerce Site, type this url http://localhost:8000/Admin
+- To Access the User Interface of Ecommerce Site, type this url http://localhost:8000/
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Here's the Email and Password of Admin Panel
+```bash
+  Email: admin@gmail.com
+  Password: password
+```
+- Click Login and you will Direct into Admin Dashboard.
+- Now, you can Enjoy and Explore Ecommerce Site in Laravel 9.

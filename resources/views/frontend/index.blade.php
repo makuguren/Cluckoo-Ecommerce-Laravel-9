@@ -22,7 +22,7 @@
                                 {!! $sliderItem->description !!}
                             </p>
                             <div>
-                                <a href="#" class="btn btn-slider">
+                                <a href="{{ url('/collections') }}" class="btn btn-slider">
                                     Get Now
                                 </a>
                             </div>
@@ -46,11 +46,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h4>Welcome to Cluckoo Ecommerce</h4>
+                    <h4>Welcome to {{ $appSetting->website_name ?? '' }}</h4>
                     <div class="underline mx-auto"></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia odio necessitatibus nesciunt ullam
-                        aspernatur molestiae nisi neque officia, sunt repellendus nobis at maiores libero quas facilis
-                        provident dicta! Repellendus, totam!</p>
+                    <p>{{ $appSetting->website_description ?? '' }}</p>
                 </div>
             </div>
         </div>
