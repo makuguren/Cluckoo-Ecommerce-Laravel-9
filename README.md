@@ -1,4 +1,6 @@
-![Logo](https://i.ibb.co/n00wDmQ/logo-dark.png)
+<p align="center">
+  <img src="https://i.ibb.co/n00wDmQ/logo-dark.png" />
+</p>
 
 # Cluckoo Ecommerce
 
