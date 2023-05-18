@@ -52,6 +52,10 @@ Clone this Repository
   git clone https://github.com/makuguren/Cluckoo-Ecommerce-Laravel-9.git
 ```
 
+## XAMPP Installation
+- Find your file where you can save/download the Composer Installer named xampp-windows-x64-8.2.4-0-VS16-installer.exe
+- Open xampp-windows-x64-8.2.4-0-VS16-installer.exe and Click Next until you get Installed in your Laptop/PC
+
 ## Composer Installation
 - Find your file where you can save/download the Composer Installer named Composer-Setup.exe
 - Open Composer-Setup.exe and Click Next until you get Installed in your Laptop/PC
@@ -61,10 +65,6 @@ To verify the Composer that you Installed in your PC/Laptop. type this in your C
 ```bash
   composer --version
 ```
-
-## XAMPP Installation
-- Find your file where you can save/download the Composer Installer named xampp-windows-x64-8.2.4-0-VS16-installer.exe
-- Open xampp-windows-x64-8.2.4-0-VS16-installer.exe and Click Next until you get Installed in your Laptop/PC
 
 ## Laravel 9 Installation
 - Open XAMPP as Administrator to Avoid Errors and Start Apache and MYSQL.
