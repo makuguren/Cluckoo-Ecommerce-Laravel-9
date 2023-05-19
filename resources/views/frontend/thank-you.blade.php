@@ -12,7 +12,8 @@
                     <h5 class="alert alert-success">{{ session('message') }}</h5>
                 @endif
                 <div class="p-4 shadow bg-white">
-                    <h2>Your Logo</h2>
+                    {{-- <h2>Your Logo</h2> --}}
+                    <img class="dark w mb-4" src="{{ asset('admin/img/logo_dark.png') }}">
                     <h4>Thank you for Shopping with Cluckoo</h4>
                     <a href="{{ url('collections') }}" class="btn btn-primary">Shop Now</a>
                 </div>
