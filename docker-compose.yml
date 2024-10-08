@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+    dcoderz_nginx:
+        image: nginx:alpine
+        container_name: cluckoo_laravel
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "3001:3001"
+        depends_on:
+            - dcoderz_service
+        volumes:
+            - ./:/var/www/cluckoo_laravel
+            - ./.docker/nginx/conf/local:/etc/nginx/conf.d
+            - ./.docker/nginx/log:/var/log/nginx
+        networks:
+            - network
+
+    dcoderz_service:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        container_name: dcoderz_service
+        restart: unless-stopped
+        tty: true
+        env_file:
+            - .//.env
+        ports:
+            - "5000:5000"
+        volumes:
+            - ./:/var/www/cluckoo_laravel
+            - ./.docker/php/local.ini:/usr/local/etc/php/local.ini
+        networks:
+            - network
+            - dcoderz_network
+networks:
+    network:
+        driver: bridge
+    dcoderz_network:
+        external: true
+
+# volumes:
+#     database-volume:
