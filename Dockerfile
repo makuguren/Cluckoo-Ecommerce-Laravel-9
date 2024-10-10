@@ -36,6 +36,7 @@ RUN chmod -R ugo+rw /var/www/cluckoo_laravel/storage \
     && chmod -R ugo+rw /var/www/cluckoo_laravel/bootstrap/cache
 
 RUN composer install
+RUN php artisan cache:clear
 
 RUN echo "* * * * * www-data /usr/bin/php /var/www/cluckoo_laravel/artisan schedule:run >> /var/log/cron.log 2>&1" > /etc/cron.d/my-crontab
 RUN chmod 0644 /etc/cron.d/my-crontab
@@ -44,8 +45,8 @@ RUN crontab /etc/cron.d/my-crontab
 
 RUN touch /var/log/cron.log
 
-RUN sed -i 's/listen = .*/listen = 0.0.0.0:5000/' /usr/local/etc/php-fpm.d/zz-docker.conf
+RUN sed -i 's/listen = .*/listen = 0.0.0.0:5001/' /usr/local/etc/php-fpm.d/zz-docker.conf
 
-EXPOSE 5000
+EXPOSE 5001
 
 CMD ["sh", "-c", "cron && php-fpm"]
